@@ -21,13 +21,16 @@ This tool is written in Go and runs as a single, cross-platform executable.
 
 A Go environment must be set up.
 
+The version of the built binary is automatically determined from git tags. For example, if your latest tag is `v1.0.0`, the binary will be versioned as `v1.0.0`. If there are uncommitted changes, a `-dirty` suffix will be added (e.g., `v1.0.0-dirty`).
+
 Simply run `make` to build the application. The following targets are available:
 
 - **`make build`**: Builds a single executable for your current operating system and architecture in the `dist/` directory.
 - **`make all`**: Cross-compiles for all target platforms (Linux, Windows, macOS) and places the binaries in platform-specific subdirectories within `dist/`.
+- **`make package`**: Builds all binaries and then creates compressed archives (.zip for Windows, .tar.gz for Linux/macOS) for each platform in the `dist/archives/` directory. These archives are ready for distribution.
 - **`make clean`**: Removes the `dist/` directory and all build artifacts.
 
-For most users, `make all` is the recommended command to generate all distributable files.
+For most users, `make all` is the recommended command to generate all distributable files. If you intend to distribute the binaries, `make package` is recommended.
 
 ---
 
